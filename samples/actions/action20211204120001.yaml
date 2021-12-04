@@ -1,0 +1,51 @@
+actions:
+  1:
+    action: create_index
+    description: >-
+      Create initial {ES_INDEX_PREFIX}sample_index index
+    options:
+      name: {ES_INDEX_PREFIX}sample_index_002
+      extra_settings:
+        settings:
+          number_of_shards: 3
+          number_of_replicas: 0
+        mappings:
+          properties:
+            profesionnalIdentifier:
+              type: text
+            reference:
+              type: integer
+            commercialName:
+              type: text
+            legalName:
+              type: text
+            location:
+              type: geo_point
+  2:
+    description: >-
+      Reindex {ES_INDEX_PREFIX}sample_index_001 to {ES_INDEX_PREFIX}sample_index_002
+    action: reindex
+    options:
+      wait_interval: 9
+      max_wait: -1
+      request_body:
+        source:
+          index: {ES_INDEX_PREFIX}sample_index_001
+        dest:
+          index: {ES_INDEX_PREFIX}sample_index_002
+    filters:
+      - filtertype: none
+  3:
+    action: alias
+    options:
+      name: {ES_INDEX_PREFIX}sample_index
+    add:
+      filters:
+        - filtertype: pattern
+          kind: regex
+          value: '^{ES_INDEX_PREFIX}sample_index_002$'
+    remove:
+      filters:
+        - filtertype: pattern
+          kind: regex
+          value: '^{ES_INDEX_PREFIX}sample_index_001$'

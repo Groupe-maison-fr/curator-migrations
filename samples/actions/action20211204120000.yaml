@@ -1,0 +1,41 @@
+actions:
+  1:
+    action: delete_indices
+    description: >-
+      Create initial {ES_INDEX_PREFIX}sample_index index
+    options:
+      continue_if_exception: True
+      ignore_empty_list: True
+    filters:
+      - filtertype: pattern
+        kind: regex
+        value: '^{ES_INDEX_PREFIX}sample_index_001$'
+  2:
+    action: create_index
+    description: >-
+      Create initial {ES_INDEX_PREFIX}sample_index index
+    options:
+      name: {ES_INDEX_PREFIX}sample_index_001
+      continue_if_exception: False
+      disable_action: False
+      extra_settings:
+        settings:
+          number_of_shards: 1
+          number_of_replicas: 0
+        mappings:
+          properties:
+              identifier:
+                  type: text
+
+  3:
+    action: alias
+    options:
+      name: {ES_INDEX_PREFIX}sample_index
+    add:
+      filters:
+      - filtertype: pattern
+        kind: regex
+        value: '^{ES_INDEX_PREFIX}sample_index_001$'
+    remove:
+      filters:
+        - filtertype: none
