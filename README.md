@@ -16,10 +16,7 @@ pip install git+https://github.com/groupe-maison-fr/curator-migrations.git
 
 ## Command options
 ```
-usage: curatorMigrations [-h] [--elasticsearch-host ELASTICSEARCH_HOST]
-                         [--elasticsearch-port ELASTICSEARCH_PORT]
-                         [--elasticsearch-username ELASTICSEARCH_USERNAME]
-                         [--elasticsearch-password ELASTICSEARCH_PASSWORD]
+usage: curatorMigrations [-h] [--elasticsearch-dsn ELASTICSEARCH_DSN]
                          [--elasticsearch-ca-path ELASTICSEARCH_CA_PATH]
                          [--action-files-path ACTION_FILES_PATH]
                          [--action-history-index-name ACTION_HISTORY_INDEX_NAME]

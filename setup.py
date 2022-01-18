@@ -20,7 +20,10 @@ setup(
     ],
     packages=["curator_migrations"],
     include_package_data=True,
-    install_requires=["elasticsearch-curator"],
+    install_requires=[
+        "elasticsearch-curator",
+        "dsnparse"
+    ],
     extras_require={
         "testing": [
             "pylint"
