@@ -56,7 +56,7 @@ def is_action_done(elasticsearch_client, index_name, migration_script_id, overri
         if action_history['_source']['status'] == 'running' and override_running_state:
             return False
 
-        raise Exception('action "%s" in "%s" is in state: "%s"' % (
+        raise Exception('action "%s" in "%s" is already in state: "%s"' % (
             migration_script_id,
             index_name, action_history['_source']['status']
         ))
