@@ -1,6 +1,6 @@
 import argparse
 import os.path
-from elasticsearch import Elasticsearch
+from elasticsearch7 import Elasticsearch
 import dsnparse
 from .str_to_bool import str_to_bool
 from .action_history import define_schema

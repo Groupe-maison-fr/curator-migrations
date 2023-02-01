@@ -1,5 +1,5 @@
 from datetime import datetime
-from elasticsearch import exceptions
+from elasticsearch7 import exceptions
 
 
 def define_schema(elasticsearch_client, index_name, force_index_creation):

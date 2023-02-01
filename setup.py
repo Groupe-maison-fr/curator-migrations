@@ -21,8 +21,8 @@ setup(
     packages=["curator_migrations"],
     include_package_data=True,
     install_requires=[
-        "elasticsearch-curator",
-        "dsnparse"
+        "elasticsearch-curator >=7.0.0, < 8.0.0",
+        "dsnparse >= 0.1, < 0.2"
     ],
     extras_require={
         "testing": [
